@@ -1,0 +1,117 @@
+Here's a simple example of a music app webpage using the protocols you mentioned:
+
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .album {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+        }
+
+        .album img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Music App</h1>
+    </header>
+
+    <main>
+        <div id="latest-albums">
+            <!-- Latest Albums will be added dynamically -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Music App. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Data for latest albums
+        const latestAlbumsData = [
+            { title: "Song",  image: "img2.jpeg" },
+            { title: "Favourite person song", image: "download.jpeg" },
+            { title: "language music", image: "img.png" }
+            
+        ];
+
+        function createAlbumElement(albumData) {
+            const albumDiv = document.createElement("div");
+            albumDiv.classList.add("album");
+
+            const img = document.createElement("img");
+            img.src = albumData.image;
+            img.alt = albumData.title;
+            albumDiv.appendChild(img);
+
+            const title = document.createElement("h3");
+            title.textContent = albumData.title;
+            title.style.color = "#333"; // Apply text color dynamically
+    title.style.marginTop = "10px"; 
+            albumDiv.appendChild(title);
+
+          
+
+            return albumDiv;
+        }
+
+        const latestAlbumsContainer = document.getElementById("latest-albums");
+        latestAlbumsData.forEach(albumData => {
+            const albumElement = createAlbumElement(albumData);
+            latestAlbumsContainer.appendChild(albumElement);
+        });
+
+        // Event listener to change the title when the button is clicked
+        const changeTitleButton = document.createElement("button");
+        changeTitleButton.textContent = "Change Title";
+        document.body.insertBefore(changeTitleButton, document.body.firstChild);
+
+        changeTitleButton.addEventListener("click", function() {
+            const headerTitle = document.getElementsByTagName("header")[0].getElementsByTagName("h1")[0]; 
+            headerTitle.textContent = "About My Music app";
+            headerTitle.style.color="red"
+        });
+    </script>
+</body>
+</html>
+
+
